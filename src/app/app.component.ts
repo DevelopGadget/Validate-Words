@@ -49,12 +49,19 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  public reset() {
+    this.stepper.reset();
+    this.stepper.steps.forEach(item => item.state = 'number');
+    this.TREE_DATA.forEach(item => item.children = []);
+    this.dataSource.data = this.TREE_DATA;
+    this.stepper._stateChanged();
+  }
+
   async validateSentence() {
     this.isLoading = true;
     this.isNotFirst = true;
-    this.stepper.reset();
-    this.stepper.steps.forEach(item => item.state = 'number');
-    this.stepper._stateChanged();
+
+    this.reset();
 
     let sentenceSplit = this.sentenceControl.value.toUpperCase().trim().split(' ');
     let stepOne = this.globalService.isValidSubject(sentenceSplit.slice(0, 2));
