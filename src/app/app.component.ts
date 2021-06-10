@@ -82,7 +82,6 @@ export class AppComponent implements OnInit {
       if(stepTwo) {
         this.stepper.next();
         let isBodyVerb = this.globalService.verb.split(' ').length >= 2;
-        console.log(sentenceSplit.slice(isBodyVerb ? 4 : 3));
         let stepThree = this.globalService.isValidComplement(sentenceSplit.slice(isBodyVerb ? 4 : 3));
 
         await of(true).pipe(delay(1000)).toPromise();

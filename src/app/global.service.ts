@@ -71,7 +71,7 @@ export class GlobalService {
 
   public isValidComplement(words: string[]): boolean {
     this.complement = words.join(' ');
-    return words.every(item => this.words.includes(item));
+    return words.every(item => this.words.includes(item)) && words.length > 0;
   }
 
 }
