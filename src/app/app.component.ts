@@ -67,10 +67,10 @@ export class AppComponent implements OnInit {
     let stepOne = this.globalService.isValidSubject(sentenceSplit.slice(0, 2));
     await of(true).pipe(delay(1000)).toPromise();
 
-    this.TREE_DATA[0].children = [{name: this.globalService.subject}];
-    this.dataSource.data = this.TREE_DATA;
-
     if(stepOne) {
+      this.TREE_DATA[0].children = [{name: this.globalService.subject}];
+      this.dataSource.data = this.TREE_DATA;
+
       this.stepper.next();
       let isBody = this.globalService.subject.split(' ').length >= 2;
       let stepTwo = this.globalService.isValidVerb(sentenceSplit.slice(isBody ? 2 : 1, isBody ? 4 : 3));
